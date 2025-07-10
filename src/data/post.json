@@ -6,7 +6,7 @@
         "image": "/IMG_1730.jpg"
       },
       {
-        "image": "/my_kisah2.mp4"
+        "image": "/my_kisah.mp4"
       },
       {
         "image": "/Bliss.png"
@@ -15,7 +15,11 @@
         "image": "/ShowHub.jpeg"
       }
     ],
-    "description": "Heloooooo guyesss"
+    "description": "Heloooooo guyesss",
+    "like_status": false,
+    "like_count": 10,
+    "comment_count": 100,
+    "shere_count": 26
   },
   {
     "id": 2,
@@ -30,7 +34,11 @@
         "image": "/Bliss.png"
       }
     ],
-    "description": "Heloooooo guyesss"
+    "description": "Heloooooo guyesss",
+    "like_status": false,
+    "like_count": 10,
+    "comment_count": 100,
+    "shere_count": 26
   },
   {
     "id": 3,
@@ -45,7 +53,11 @@
         "image": "/porche.jpg"
       }
     ],
-    "description": "Heloooooo guyesss"
+    "description": "Heloooooo guyesss",
+    "like_status": false,
+    "like_count": 10,
+    "comment_count": 100,
+    "shere_count": 26
   },
   {
     "id": 4,
@@ -60,7 +72,11 @@
         "image": "/IMG_1381.jpg"
       }
     ],
-    "description": "Heloooooo guyesss"
+    "description": "Heloooooo guyesss",
+    "like_status": false,
+    "like_count": 10,
+    "comment_count": 100,
+    "shere_count": 26
   },
   {
     "id": 5,
@@ -75,6 +91,10 @@
         "image": "/IMG_1730.jpg"
       }
     ],
-    "description": "Heloooooo guyesss"
+    "description": "Heloooooo guyesss",
+    "like_status": false,
+    "like_count": 10,
+    "comment_count": 100,
+    "shere_count": 26
   }
 ]
