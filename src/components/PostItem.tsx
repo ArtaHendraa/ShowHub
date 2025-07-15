@@ -83,11 +83,11 @@ const PostItemDescription = (props: PostItemDescriptionProps) => {
 
 const PostItemImagesWrapper = (props: PostItemImagesProps) => {
   return (
-    <div className="py-1 overflow-x-auto pointer-events-auto no-scrollbar cursor-grab scroll-smooth whitespace-nowrap active:cursor-grabbing">
+    <figure className="py-1 overflow-x-auto pointer-events-auto no-scrollbar cursor-grab scroll-smooth whitespace-nowrap active:cursor-grabbing">
       <div className="flex items-center gap-2 ml-16 mr-5 w-max">
         {props.children}
       </div>
-    </div>
+    </figure>
   );
 };
 
@@ -119,29 +119,3 @@ export {
   PostItemActionButtonWrapper,
   PostItemActionButton,
 };
-
-{
-  /* <span className="flex items-center gap-1 px-3 py-2 transition-colors duration-100 cursor-pointer rounded-xl hover:bg-white/5">
-        <Image
-          src={"/icons/comment.svg"}
-          height={24}
-          width={24}
-          alt="comment-icon"
-          className="text-white select-none size-6"
-        />
-        <h4 className="font-mono uppercase select-none">
-          {datas.comment_count}
-        </h4>
-      </span>
-
-      <span className="flex items-center gap-1 px-3 py-2 transition-colors duration-100 cursor-pointer rounded-xl hover:bg-white/5">
-        <Image
-          src={"/icons/shere.svg"}
-          height={24}
-          width={24}
-          alt="comment-icon"
-          className="text-white select-none size-6"
-        />
-        <h4 className="font-mono uppercase select-none">{datas.shere_count}</h4>
-      </span> */
-}

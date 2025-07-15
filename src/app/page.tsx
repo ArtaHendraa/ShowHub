@@ -13,8 +13,6 @@ import {
   PostItemWrapper,
 } from "@/components/PostItem";
 
-// TODO: pisahin komponennya
-
 const Home = () => {
   const [activeTab, setActiveTab] = useState("following");
 
@@ -33,14 +31,15 @@ const Home = () => {
 
   return (
     <>
-      <main className="relative mx-auto mt-5 flex max-w-7xl items-start justify-center gap-5 text-[#f3f5f7]">
+      <main className="relative mx-auto mt-5 flex max-w-7xl items-start justify-center gap-3 text-[#f3f5f7]">
         <SideMenu text="links" className="">
           <div>link</div>
         </SideMenu>
 
         <section className="w-full max-w-xl shrink-0">
-          <div className="flex w-full justify-between gap-0.5 rounded-xl border border-[#2d2d2d] bg-[#181818] p-1">
+          <nav className="flex w-full justify-between gap-0.5 rounded-xl border border-[#2d2d2d] bg-[#181818] p-1">
             <button
+              title="following-page"
               onClick={() => setActiveTab("following")}
               className={`w-full cursor-pointer rounded-lg py-2 text-center font-semibold duration-100 ${
                 activeTab === "following" ? "bg-white/5" : ""
@@ -49,6 +48,7 @@ const Home = () => {
               Following
             </button>
             <button
+              title="for-you-page"
               onClick={() => setActiveTab("foryou")}
               className={`w-full cursor-pointer rounded-lg py-2 text-center font-semibold duration-100 ${
                 activeTab === "foryou" ? "bg-white/5" : ""
@@ -56,37 +56,9 @@ const Home = () => {
             >
               For You
             </button>
-          </div>
+          </nav>
 
-          <div className="sticky mt-3 flex cursor-pointer items-center justify-between rounded-xl border border-[#2d2d2d] bg-[#181818] p-3">
-            <div className="flex items-center gap-3">
-              <Image
-                className="ml-1 aspect-square w-full max-w-10 rounded-full border border-[#2d2d2d] object-cover"
-                src="/IMG_1730.jpg"
-                alt="image"
-                width="50"
-                height="50"
-              />
-              <h2 className="w-full opacity-50">What&apos;s new?</h2>
-            </div>
-
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="size-6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M12 4.5v15m7.5-7.5h-15"
-              />
-            </svg>
-          </div>
-
-          <div className="mt-3 rounded-xl border border-[#2d2d2d] bg-[#181818]">
+          <article className="mt-3 rounded-xl border border-[#2d2d2d] bg-[#181818]">
             {postData.map((datas, index) => (
               <PostItemWrapper key={index + 1}>
                 <PostItemAccount name={"jane doe"} username={"@janedoe"} />
@@ -94,11 +66,7 @@ const Home = () => {
 
                 <PostItemImagesWrapper>
                   {datas.images.map((data, index) => {
-                    const isVideo =
-                      data.image.endsWith(".mp4") ||
-                      data.image.endsWith(".mov") ||
-                      data.image.endsWith(".mkv");
-
+                    const isVideo = data.image.endsWith(".mp4");
                     return isVideo ? (
                       <video
                         key={index}
@@ -110,7 +78,6 @@ const Home = () => {
                         className="object-cover w-auto h-64 max-w-lg rounded-lg"
                       >
                         <source src={data.image} type="video/mp4" />
-                        Browser kamu tidak mendukung video.
                       </video>
                     ) : (
                       <Image
@@ -118,6 +85,7 @@ const Home = () => {
                         src={data.image}
                         width={600}
                         height={600}
+                        loading="lazy"
                         alt="image_test"
                         className="object-cover w-auto h-64 max-w-lg rounded-lg"
                       />
@@ -163,7 +131,7 @@ const Home = () => {
                 </PostItemActionButtonWrapper>
               </PostItemWrapper>
             ))}
-          </div>
+          </article>
         </section>
 
         <SideMenu text="sidebar" className="p-3">
@@ -174,24 +142,26 @@ const Home = () => {
             width="100"
             height="100"
           />
-          <div className="flex items-center justify-between w-full">
+          <header className="flex items-center justify-between w-full">
             <div>
               <h1 className="text-lg font-semibold">jane doe</h1>
               <h3 className="text-xs opacity-50">@janedoe</h3>
             </div>
             <motion.button
+              title="edit-profile"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 1 }}
               className="px-3 py-2 text-xs font-light capitalize rounded-lg cursor-pointer bg-white/5 opacity-80"
             >
               edit profile
             </motion.button>
-          </div>
+          </header>
 
-          <h2 className="my-3 text-sm">aku sofuer enjiner</h2>
+          <p className="my-3 text-sm">aku sofuer enjiner</p>
 
           <div className="flex items-center gap-3 text-sm">
             <motion.button
+              title="followers"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 1 }}
               className="flex items-center justify-center w-full gap-1 px-3 py-2 capitalize rounded-lg cursor-pointer bg-white/5"
@@ -220,6 +190,7 @@ const Home = () => {
       </main>
 
       <motion.button
+        title="add-post"
         whileHover={{ scale: 1.2 }}
         whileTap={{ scale: 1 }}
         className="fixed right-10 bottom-10 cursor-pointer rounded-xl border border-[#2d2d2d] bg-[#181818] p-4"
