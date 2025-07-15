@@ -25,13 +25,16 @@
     "id": 2,
     "images": [
       {
-        "image": "/porche.jpg"
+        "image": "/1.jpeg"
       },
       {
-        "image": "/cc.png"
+        "image": "/2.jpeg"
       },
       {
-        "image": "/Bliss.png"
+        "image": "/3.jpeg"
+      },
+      {
+        "image": "/4.jpeg"
       }
     ],
     "description": "Heloooooo guyesss",
