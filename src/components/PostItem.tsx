@@ -5,9 +5,11 @@ type PostItemWrapperProps = {
   children: React.ReactNode;
 };
 
-type PostItemAccountProps = {
+type PostItemProfileProps = {
   name: string;
   username: string;
+  image: string;
+  link: string;
 };
 
 type PostItemDescriptionProps = {
@@ -36,21 +38,21 @@ const PostItemWrapper = (props: PostItemWrapperProps) => {
   );
 };
 
-const PostItemAccount = (props: PostItemAccountProps) => {
+const PostItemProfile = (props: PostItemProfileProps) => {
   return (
-    <div className="flex items-center justify-between px-3 pt-3 mb-3">
-      <Link href={""} className="flex items-center gap-3">
+    <figure className="flex items-center justify-between px-3 pt-3">
+      <Link href={props.link} className="flex items-center gap-3">
         <Image
-          className="aspect-square w-full max-w-10 cursor-pointer rounded-full border border-[#2d2d2d] object-cover"
-          src="/IMG_1730.jpg"
-          alt="image"
+          className="aspect-square h-full w-full max-w-10 rounded-full border border-[#2d2d2d] object-cover"
+          src={props.image}
+          alt={`image-${props.username}`}
           width="50"
           height="50"
         />
-        <div>
+        <figcaption>
           <h1 className="font-semibold">{props.name}</h1>
-          <h3 className="text-xs opacity-50">{props.username}</h3>
-        </div>
+          <h3 className="text-xs opacity-50">@{props.username}</h3>
+        </figcaption>
       </Link>
 
       <button className="cursor-pointer">
@@ -69,14 +71,14 @@ const PostItemAccount = (props: PostItemAccountProps) => {
           />
         </svg>
       </button>
-    </div>
+    </figure>
   );
 };
 
 const PostItemDescription = (props: PostItemDescriptionProps) => {
   return (
     <span>
-      <p className="mb-3 ml-16">{props.description}</p>
+      <p className="py-3 ml-16">{props.description}</p>
     </span>
   );
 };
@@ -113,7 +115,7 @@ const PostItemActionButton = (props: PostItemActionButtonProps) => {
 
 export {
   PostItemWrapper,
-  PostItemAccount,
+  PostItemProfile,
   PostItemDescription,
   PostItemImagesWrapper,
   PostItemActionButtonWrapper,

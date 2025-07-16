@@ -3,15 +3,16 @@ import Image from "next/image";
 import { useState } from "react";
 import postData from "@/data/post.json";
 import SideMenu from "@/components/SideMenu";
-import * as motion from "motion/react-client";
+import { motion } from "motion/react";
 import {
-  PostItemAccount,
+  PostItemProfile,
   PostItemActionButton,
   PostItemActionButtonWrapper,
   PostItemDescription,
   PostItemImagesWrapper,
   PostItemWrapper,
 } from "@/components/PostItem";
+import Link from "next/link";
 
 const Home = () => {
   const [activeTab, setActiveTab] = useState("following");
@@ -61,37 +62,43 @@ const Home = () => {
           <article className="mt-3 rounded-xl border border-[#2d2d2d] bg-[#181818]">
             {postData.map((datas, index) => (
               <PostItemWrapper key={index + 1}>
-                <PostItemAccount name={"jane doe"} username={"@janedoe"} />
-                <PostItemDescription description={datas.description} />
-
-                <PostItemImagesWrapper>
-                  {datas.images.map((data, index) => {
-                    const isVideo = data.image.endsWith(".mp4");
-                    return isVideo ? (
-                      <video
-                        key={index}
-                        // controls
-                        playsInline
-                        autoPlay
-                        loop
-                        muted
-                        className="object-cover w-auto h-64 max-w-lg rounded-lg"
-                      >
-                        <source src={data.image} type="video/mp4" />
-                      </video>
-                    ) : (
-                      <Image
-                        key={index}
-                        src={data.image}
-                        width={600}
-                        height={600}
-                        loading="lazy"
-                        alt="image_test"
-                        className="object-cover w-auto h-64 max-w-lg rounded-lg"
-                      />
-                    );
-                  })}
-                </PostItemImagesWrapper>
+                <PostItemProfile
+                  name={"jane doe"}
+                  username={"janedoe"}
+                  image="/2.jpeg"
+                  link="/"
+                />
+                <Link href={"/detail"} className="">
+                  <PostItemDescription description={datas.description} />
+                  <PostItemImagesWrapper>
+                    {datas.images.map((data, index) => {
+                      const isVideo = data.image.endsWith(".mp4");
+                      return isVideo ? (
+                        <video
+                          key={index}
+                          // controls
+                          playsInline
+                          autoPlay
+                          loop
+                          muted
+                          className="object-cover w-auto h-64 max-w-lg rounded-lg"
+                        >
+                          <source src={data.image} type="video/mp4" />
+                        </video>
+                      ) : (
+                        <Image
+                          key={index}
+                          src={data.image}
+                          width={600}
+                          height={600}
+                          loading="lazy"
+                          alt="image_test"
+                          className="object-cover w-auto h-64 max-w-lg rounded-lg"
+                        />
+                      );
+                    })}
+                  </PostItemImagesWrapper>
+                </Link>
 
                 <PostItemActionButtonWrapper>
                   <PostItemActionButton onClick={handleLike} likesCount={likes}>
