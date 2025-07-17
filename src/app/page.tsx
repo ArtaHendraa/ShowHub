@@ -29,10 +29,9 @@ const Home = () => {
       setLiked(true);
     }
   };
-
   return (
     <>
-      <main className="relative mx-auto mt-5 flex max-w-7xl items-start justify-center gap-3 text-[#f3f5f7]">
+      <main className="relative mx-auto mt-3 flex max-w-7xl items-start justify-center gap-3 text-black dark:text-[#f3f5f7]">
         <SideMenu text="links" className="">
           <div>link</div>
         </SideMenu>
@@ -71,32 +70,64 @@ const Home = () => {
                 <Link href={"/detail"} className="">
                   <PostItemDescription description={datas.description} />
                   <PostItemImagesWrapper>
-                    {datas.images.map((data, index) => {
-                      const isVideo = data.image.endsWith(".mp4");
-                      return isVideo ? (
-                        <video
-                          key={index}
-                          // controls
-                          playsInline
-                          autoPlay
-                          loop
-                          muted
-                          className="object-cover w-auto h-64 max-w-lg rounded-lg"
-                        >
-                          <source src={data.image} type="video/mp4" />
-                        </video>
-                      ) : (
-                        <Image
-                          key={index}
-                          src={data.image}
-                          width={600}
-                          height={600}
-                          loading="lazy"
-                          alt="image_test"
-                          className="object-cover w-auto h-64 max-w-lg rounded-lg"
-                        />
-                      );
-                    })}
+                    {/* condidional rendering for image size*/}
+                    {datas.images.length === 1 ? (
+                      (() => {
+                        const data = datas.images[0];
+                        const isVideo = data.image.endsWith(".mp4");
+
+                        {
+                          /* condidional rendering for image or video*/
+                        }
+                        return isVideo ? (
+                          <video
+                            playsInline
+                            autoPlay
+                            loop
+                            muted
+                            className="w-full max-w-md min-w-md rounded-lg object-cover"
+                          >
+                            <source src={data.image} type="video/mp4" />
+                          </video>
+                        ) : (
+                          <Image
+                            src={data.image}
+                            width={800}
+                            height={800}
+                            alt="single image"
+                            className="w-full max-w-md min-w-md rounded-lg object-cover"
+                          />
+                        );
+                      })()
+                    ) : (
+                      <figure className="flex max-h-64 gap-2 overflow-x-auto">
+                        {datas.images.map((data, index) => {
+                          const isVideo = data.image.endsWith(".mp4");
+                          return isVideo ? (
+                            <video
+                              key={index}
+                              playsInline
+                              autoPlay
+                              loop
+                              muted
+                              className="h-64 w-auto max-w-lg rounded-lg object-cover"
+                            >
+                              <source src={data.image} type="video/mp4" />
+                            </video>
+                          ) : (
+                            <Image
+                              key={index}
+                              src={data.image}
+                              width={600}
+                              height={600}
+                              loading="lazy"
+                              alt={`image-${index}`}
+                              className="h-64 w-auto max-w-lg rounded-lg object-cover"
+                            />
+                          );
+                        })}
+                      </figure>
+                    )}
                   </PostItemImagesWrapper>
                 </Link>
 
@@ -108,7 +139,7 @@ const Home = () => {
                       viewBox="0 0 24 24"
                       strokeWidth={1.5}
                       stroke={liked == true ? "#2d2d2d" : "#fff"}
-                      className="select-none size-6"
+                      className="size-6 select-none"
                     >
                       <path
                         strokeLinecap="round"
@@ -123,7 +154,7 @@ const Home = () => {
                       height={24}
                       width={24}
                       alt="comment-icon"
-                      className="text-white select-none size-6"
+                      className="size-6 text-white select-none"
                     />
                   </PostItemActionButton>
                   <PostItemActionButton likesCount={datas.shere_count}>
@@ -132,7 +163,7 @@ const Home = () => {
                       height={24}
                       width={24}
                       alt="comment-icon"
-                      className="text-white select-none size-6"
+                      className="size-6 text-white select-none"
                     />
                   </PostItemActionButton>
                 </PostItemActionButtonWrapper>
@@ -149,7 +180,7 @@ const Home = () => {
             width="100"
             height="100"
           />
-          <header className="flex items-center justify-between w-full">
+          <header className="flex w-full items-center justify-between">
             <div>
               <h1 className="text-lg font-semibold">jane doe</h1>
               <h3 className="text-xs opacity-50">@janedoe</h3>
@@ -158,7 +189,7 @@ const Home = () => {
               title="edit-profile"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 1 }}
-              className="px-3 py-2 text-xs font-light capitalize rounded-lg cursor-pointer bg-white/5 opacity-80"
+              className="cursor-pointer rounded-lg bg-white/5 px-3 py-2 text-xs font-light capitalize opacity-80"
             >
               edit profile
             </motion.button>
@@ -171,7 +202,7 @@ const Home = () => {
               title="followers"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 1 }}
-              className="flex items-center justify-center w-full gap-1 px-3 py-2 capitalize rounded-lg cursor-pointer bg-white/5"
+              className="flex w-full cursor-pointer items-center justify-center gap-1 rounded-lg bg-white/5 px-3 py-2 capitalize"
             >
               <span className="font-semibold">30K</span>
               <span>followers</span>
@@ -180,7 +211,7 @@ const Home = () => {
             <motion.button
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 1 }}
-              className="flex items-center justify-center w-full gap-1 px-3 py-2 capitalize rounded-lg cursor-pointer bg-white/5"
+              className="flex w-full cursor-pointer items-center justify-center gap-1 rounded-lg bg-white/5 px-3 py-2 capitalize"
             >
               <span className="font-semibold">45</span>
               <span>following</span>
@@ -189,7 +220,7 @@ const Home = () => {
           <motion.button
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 1 }}
-            className="w-full py-2 mt-3 text-sm capitalize rounded-lg cursor-pointer bg-white/5"
+            className="mt-3 w-full cursor-pointer rounded-lg bg-white/5 py-2 text-sm capitalize"
           >
             view profile
           </motion.button>
