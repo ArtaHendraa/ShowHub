@@ -29,7 +29,7 @@ const Detail = () => {
     }
   };
 
-  const data = postData[1];
+  const data = postData[5];
 
   const focusToTextarea = () => {
     commentRef.current?.focus();
@@ -93,32 +93,63 @@ const Detail = () => {
             <Link href={"/detail"} className="">
               <PostItemDescription description={data.description} />
               <PostItemImagesWrapper>
-                {data.images.map((data, index) => {
-                  const isVideo = data.image.endsWith(".mp4");
-                  return isVideo ? (
-                    <video
-                      key={index}
-                      controls
-                      playsInline
-                      autoPlay
-                      loop
-                      muted
-                      className="h-64 w-auto max-w-lg rounded-lg object-cover"
-                    >
-                      <source src={data.image} type="video/mp4" />
-                    </video>
-                  ) : (
-                    <Image
-                      key={index}
-                      src={data.image}
-                      width={600}
-                      height={600}
-                      loading="lazy"
-                      alt="image_test"
-                      className="w-full max-w-lg rounded-lg object-cover"
-                    />
-                  );
-                })}
+                {/* condidional rendering for image size*/}
+                {data.images.length === 1 ? (
+                  (() => {
+                    const oneImage = data.images[0];
+                    const isVideo = oneImage.image.endsWith(".mp4");
+                    {
+                      /* condidional rendering for image or video*/
+                    }
+                    return isVideo ? (
+                      <video
+                        playsInline
+                        autoPlay
+                        loop
+                        muted
+                        className="w-full max-w-lg min-w-lg rounded-lg object-cover"
+                      >
+                        <source src={oneImage.image} type="video/mp4" />
+                      </video>
+                    ) : (
+                      <Image
+                        src={oneImage.image}
+                        width={800}
+                        height={800}
+                        alt="single image"
+                        className="w-full max-w-lg min-w-lg rounded-lg object-cover"
+                      />
+                    );
+                  })()
+                ) : (
+                  <figure className="flex max-h-64 gap-2 overflow-x-auto">
+                    {data.images.map((data, index) => {
+                      const isVideo = data.image.endsWith(".mp4");
+                      return isVideo ? (
+                        <video
+                          key={index}
+                          playsInline
+                          autoPlay
+                          loop
+                          muted
+                          className="h-64 w-auto max-w-lg rounded-lg object-cover"
+                        >
+                          <source src={data.image} type="video/mp4" />
+                        </video>
+                      ) : (
+                        <Image
+                          key={index}
+                          src={data.image}
+                          width={600}
+                          height={600}
+                          loading="lazy"
+                          alt={`image-${index}`}
+                          className="h-64 w-auto max-w-lg rounded-lg object-cover"
+                        />
+                      );
+                    })}
+                  </figure>
+                )}
               </PostItemImagesWrapper>
             </Link>
 
