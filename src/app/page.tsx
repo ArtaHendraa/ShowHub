@@ -3,7 +3,6 @@ import Image from "next/image";
 import { useState } from "react";
 import postData from "@/data/post.json";
 import SideMenu from "@/components/SideMenu";
-import { motion } from "motion/react";
 import {
   PostItemProfile,
   PostItemActionButton,
@@ -33,7 +32,15 @@ const Home = () => {
     <>
       <main className="relative mx-auto mt-3 flex max-w-7xl items-start justify-center gap-3 text-black dark:text-[#f3f5f7]">
         <SideMenu text="links" className="">
-          <div>link</div>
+          <div className="flex flex-col">
+            <Link href={""}>
+              {/* <Image src={"/icons/home.svg"} fill alt="home" /> */}
+              <span>Home</span>
+            </Link>
+            <Link href={""}>Explore</Link>
+            <Link href={""}>Notification</Link>
+            <Link href={""}>Profile</Link>
+          </div>
         </SideMenu>
 
         <section className="w-full max-w-xl shrink-0">
@@ -94,6 +101,7 @@ const Home = () => {
                             src={data.image}
                             width={800}
                             height={800}
+                            priority
                             alt="single image"
                             className="w-full max-w-md min-w-md rounded-lg object-cover"
                           />
@@ -185,52 +193,38 @@ const Home = () => {
               <h1 className="text-lg font-semibold">jane doe</h1>
               <h3 className="text-xs opacity-50">@janedoe</h3>
             </div>
-            <motion.button
+            <button
               title="edit-profile"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 1 }}
               className="cursor-pointer rounded-lg bg-white/5 px-3 py-2 text-xs font-light capitalize opacity-80"
             >
               edit profile
-            </motion.button>
+            </button>
           </header>
 
           <p className="my-3 text-sm">aku sofuer enjiner</p>
 
           <div className="flex items-center gap-3 text-sm">
-            <motion.button
+            <button
               title="followers"
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 1 }}
               className="flex w-full cursor-pointer items-center justify-center gap-1 rounded-lg bg-white/5 px-3 py-2 capitalize"
             >
               <span className="font-semibold">30K</span>
               <span>followers</span>
-            </motion.button>
+            </button>
 
-            <motion.button
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 1 }}
-              className="flex w-full cursor-pointer items-center justify-center gap-1 rounded-lg bg-white/5 px-3 py-2 capitalize"
-            >
+            <button className="flex w-full cursor-pointer items-center justify-center gap-1 rounded-lg bg-white/5 px-3 py-2 capitalize">
               <span className="font-semibold">45</span>
               <span>following</span>
-            </motion.button>
+            </button>
           </div>
-          <motion.button
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 1 }}
-            className="mt-3 w-full cursor-pointer rounded-lg bg-white/5 py-2 text-sm capitalize"
-          >
+          <button className="mt-3 w-full cursor-pointer rounded-lg bg-white/5 py-2 text-sm capitalize">
             view profile
-          </motion.button>
+          </button>
         </SideMenu>
       </main>
 
-      <motion.button
+      <button
         title="add-post"
-        whileHover={{ scale: 1.2 }}
-        whileTap={{ scale: 1 }}
         className="fixed right-10 bottom-10 cursor-pointer rounded-xl border border-[#2d2d2d] bg-[#181818] p-4"
       >
         <svg
@@ -247,7 +241,7 @@ const Home = () => {
             d="M12 4.5v15m7.5-7.5h-15"
           />
         </svg>
-      </motion.button>
+      </button>
     </>
   );
 };

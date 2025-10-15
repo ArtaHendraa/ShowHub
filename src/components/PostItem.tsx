@@ -36,7 +36,7 @@ type PostItemActionButtonProps = {
 const PostItemWrapper = (props: PostItemWrapperProps) => {
   return (
     <div
-      className={`flex flex-col ${props.className} rounded-b-xl border-b border-[#2d2d2d]`}
+      className={`flex flex-col ${props.className} border-b border-[#2d2d2d]`}
     >
       {props.children}
     </div>

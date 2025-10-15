@@ -36,7 +36,7 @@ const Detail = () => {
   };
   return (
     <main className="relative mx-auto mt-3 flex max-w-2xl flex-col items-center justify-center gap-3 text-black dark:text-[#f3f5f7]">
-      <div className="flex w-full items-center justify-between">
+      <div className="flex items-center justify-between w-full">
         <Link
           href={"/"}
           title="Back to home"
@@ -107,7 +107,7 @@ const Detail = () => {
                         autoPlay
                         loop
                         muted
-                        className="w-full max-w-lg min-w-lg rounded-lg object-cover"
+                        className="object-cover w-full max-w-lg rounded-lg min-w-lg"
                       >
                         <source src={oneImage.image} type="video/mp4" />
                       </video>
@@ -117,12 +117,12 @@ const Detail = () => {
                         width={800}
                         height={800}
                         alt="single image"
-                        className="w-full max-w-lg min-w-lg rounded-lg object-cover"
+                        className="object-cover w-full max-w-lg rounded-lg min-w-lg"
                       />
                     );
                   })()
                 ) : (
-                  <figure className="flex max-h-64 gap-2 overflow-x-auto">
+                  <figure className="flex gap-2 overflow-x-auto max-h-64">
                     {data.images.map((data, index) => {
                       const isVideo = data.image.endsWith(".mp4");
                       return isVideo ? (
@@ -132,7 +132,7 @@ const Detail = () => {
                           autoPlay
                           loop
                           muted
-                          className="h-64 w-auto max-w-lg rounded-lg object-cover"
+                          className="object-cover w-auto h-64 max-w-lg rounded-lg"
                         >
                           <source src={data.image} type="video/mp4" />
                         </video>
@@ -144,7 +144,7 @@ const Detail = () => {
                           height={600}
                           loading="lazy"
                           alt={`image-${index}`}
-                          className="h-64 w-auto max-w-lg rounded-lg object-cover"
+                          className="object-cover w-auto h-64 max-w-lg rounded-lg"
                         />
                       );
                     })}
@@ -161,7 +161,7 @@ const Detail = () => {
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke={liked == true ? "#2d2d2d" : "#fff"}
-                  className="size-6 select-none"
+                  className="select-none size-6"
                 >
                   <path
                     strokeLinecap="round"
@@ -179,7 +179,7 @@ const Detail = () => {
                   height={24}
                   width={24}
                   alt="comment-icon"
-                  className="size-6 text-white select-none"
+                  className="text-white select-none size-6"
                 />
               </PostItemActionButton>
               <PostItemActionButton likesCount={data.shere_count}>
@@ -188,7 +188,7 @@ const Detail = () => {
                   height={24}
                   width={24}
                   alt="comment-icon"
-                  className="size-6 text-white select-none"
+                  className="text-white select-none size-6"
                 />
               </PostItemActionButton>
             </PostItemActionButtonWrapper>
@@ -210,7 +210,7 @@ const Detail = () => {
                   target.style.height = "auto";
                   target.style.height = `${target.scrollHeight}px`;
                 }}
-                className="focus:none w-full resize-none overflow-hidden focus:border-transparent focus:ring-0 focus:outline-none"
+                className="w-full overflow-hidden resize-none focus:none focus:border-transparent focus:ring-0 focus:outline-none"
               ></textarea>
 
               <button className="ml-3 cursor-pointer">
@@ -219,7 +219,7 @@ const Detail = () => {
                   height={24}
                   width={24}
                   alt="comment-icon"
-                  className="size-6 text-white select-none"
+                  className="text-white select-none size-6"
                 />
               </button>
             </form>
@@ -235,7 +235,7 @@ const Detail = () => {
                 description={data.description}
                 className="!py-2"
               />
-              <div className="ml-16 flex items-center gap-3 pb-3">
+              <div className="flex items-center gap-3 pb-3 ml-16">
                 <PostItemActionButton onClick={handleLike} likesCount={likes}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -243,7 +243,7 @@ const Detail = () => {
                     viewBox="0 0 24 24"
                     strokeWidth={1.5}
                     stroke={liked == true ? "#2d2d2d" : "#fff"}
-                    className="size-6 select-none"
+                    className="select-none size-6"
                   >
                     <path
                       strokeLinecap="round"
@@ -258,7 +258,7 @@ const Detail = () => {
                     height={24}
                     width={24}
                     alt="comment-icon"
-                    className="size-6 text-white select-none"
+                    className="text-white select-none size-6"
                   />
                 </PostItemActionButton>
               </div>
