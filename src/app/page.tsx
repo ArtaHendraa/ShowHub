@@ -33,13 +33,46 @@ const Home = () => {
       <main className="relative mx-auto mt-3 flex max-w-7xl items-start justify-center gap-3 text-black dark:text-[#f3f5f7]">
         <SideMenu text="links" className="">
           <div className="flex flex-col">
-            <Link href={""}>
-              {/* <Image src={"/icons/home.svg"} fill alt="home" /> */}
+            <Link href={""} className="flex items-center gap-2">
+              <Image
+                src={"/icons/home.svg"}
+                width={100}
+                height={100}
+                alt="home"
+                className="size-6"
+              />
               <span>Home</span>
             </Link>
-            <Link href={""}>Explore</Link>
-            <Link href={""}>Notification</Link>
-            <Link href={""}>Profile</Link>
+            <Link href={""} className="flex items-center gap-2">
+              <Image
+                src={"/icons/magnifying-glass.svg"}
+                width={100}
+                height={100}
+                alt="home"
+                className="size-6"
+              />
+              <span>Explore</span>
+            </Link>
+            <Link href={""} className="flex items-center gap-2">
+              <Image
+                src={"/icons/notification.svg"}
+                width={100}
+                height={100}
+                alt="home"
+                className="size-6"
+              />
+              <span>Notification</span>
+            </Link>
+            <Link href={""} className="flex items-center gap-2">
+              <Image
+                src={"/icons/user.svg"}
+                width={100}
+                height={100}
+                alt="home"
+                className="size-6"
+              />
+              <span>Profile</span>
+            </Link>
           </div>
         </SideMenu>
 
